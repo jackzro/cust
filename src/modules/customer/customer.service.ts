@@ -19,9 +19,7 @@ export class CustomerService {
   }
 
   async findAll() {
-    return this.customerRepository.find({
-      show: true,
-    });
+    return this.customerRepository.find();
   }
 
   async findWithCdrMonths() {

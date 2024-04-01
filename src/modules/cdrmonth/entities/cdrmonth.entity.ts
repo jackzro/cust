@@ -17,6 +17,12 @@ export class Cdrmonth extends BaseEntity {
   bulan: Bulans;
 
   @Column()
+  tahun: string;
+
+  @Column()
+  provider: string;
+
+  @Column()
   totalsec: number;
 
   @ManyToOne(() => Customer, (customers) => customers.cdrmonths)

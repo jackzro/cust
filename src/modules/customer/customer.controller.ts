@@ -32,7 +32,6 @@ export class CustomerController {
 
   @Get(':id')
   findOne(@Param('id') id: string) {
-    console.log(id);
     return this.customerService.findOne(id);
   }
 

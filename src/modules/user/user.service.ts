@@ -22,6 +22,7 @@ export class UserService {
     user.username = userRegister.username;
     user.email = userRegister.email;
     user.password = userRegister.password;
+    user.code = userRegister.code;
 
     return await user.save();
   }

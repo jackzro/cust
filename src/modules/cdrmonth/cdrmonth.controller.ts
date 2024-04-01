@@ -1,7 +1,16 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  Delete,
+} from '@nestjs/common';
 import { CdrmonthService } from './cdrmonth.service';
 import { CreateCdrmonthDto } from './dto/create-cdrmonth.dto';
 import { UpdateCdrmonthDto } from './dto/update-cdrmonth.dto';
+import { CustomerService } from '../customer/customer.service';
 
 @Controller('cdrmonth')
 export class CdrmonthController {
@@ -10,6 +19,11 @@ export class CdrmonthController {
   @Post()
   create(@Body() createCdrmonthDto: CreateCdrmonthDto) {
     return this.cdrmonthService.create(createCdrmonthDto);
+  }
+
+  @Post('/month')
+  findMonth(@Body() cdrmonthDto) {
+    return this.cdrmonthService.findMonth(cdrmonthDto);
   }
 
   @Get()
@@ -23,7 +37,10 @@ export class CdrmonthController {
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updateCdrmonthDto: UpdateCdrmonthDto) {
+  update(
+    @Param('id') id: string,
+    @Body() updateCdrmonthDto: UpdateCdrmonthDto,
+  ) {
     return this.cdrmonthService.update(+id, updateCdrmonthDto);
   }
 

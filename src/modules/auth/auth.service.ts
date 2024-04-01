@@ -18,6 +18,7 @@ export class AuthService {
       criteria['email'] === undefined
         ? await this.userService.getUserByUsername(criteria.username)
         : await this.userService.getUserByEmail(criteria.email);
+
     if (!user) throw new BadRequestException();
     if (!(await bcrypt.compare(password, user.password)))
       throw new UnauthorizedException();
